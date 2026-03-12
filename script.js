@@ -18,6 +18,7 @@ const coverURL = "https://cdn.jsdelivr.net/gh/gnmathcopy/covers@main";
 const htmlURL = "https://cdn.jsdelivr.net/gh/gnmathcopy/html@main";
 let zones = [];
 let popularityData = {};
+let currentZone = null;
 const featuredContainer = document.getElementById('featuredZones');
 async function listZones() {
     try {
@@ -321,24 +322,20 @@ function openZone(file) {
             zoneFrame.contentDocument.open();
             zoneFrame.contentDocument.write(html);
             zoneFrame.contentDocument.close();
-            document.getElementById('zoneName').textContent = file.name;
-            document.getElementById('zoneId').textContent = file.id;
-            document.getElementById('zoneAuthor').textContent = "by " + file.author;
-            if (file.authorLink) {
-                document.getElementById('zoneAuthor').href = file.authorLink;
-            }
+            currentZone = file;
             zoneViewer.style.display = "block";
             const url = new URL(window.location);
             url.searchParams.set('id', file.id);
             history.pushState(null, '', url.toString());
-            zoneViewer.hidden = true;
+            zoneViewer.hidden = false;
         }).catch(error => alert("Failed to load zone: " + error));
     }
 }
 
 function aboutBlank() {
     const newWindow = window.open("about:blank", "_blank");
-    let zone = zones.find(zone => zone.id + '' === document.getElementById('zoneId').textContent).url.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
+    if (!currentZone) return;
+    let zone = currentZone.url.replace("{COVER_URL}", coverURL).replace("{HTML_URL}", htmlURL);
     fetch(zone+"?t="+Date.now()).then(response => response.text()).then(html => {
         if (newWindow) {
             newWindow.document.open();
@@ -351,14 +348,15 @@ function aboutBlank() {
 function closeZone() {
     zoneViewer.hidden = false;
     zoneViewer.style.display = "none";
-    zoneViewer.removeChild(zoneFrame);
+    currentZone = null;
     const url = new URL(window.location);
     url.searchParams.delete('id');
     history.pushState(null, '', url.toString());
 }
 
 function downloadZone() {
-    let zone = zones.find(zone => zone.id + '' === document.getElementById('zoneId').textContent);
+    let zone = currentZone;
+    if (!zone) return;
     fetch(zone.url.replace("{HTML_URL}", htmlURL)+"?t="+Date.now()).then(res => res.text()).then(text => {
         const blob = new Blob([text], {
             type: "text/plain;charset=utf-8"
