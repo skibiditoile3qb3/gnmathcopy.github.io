@@ -12,6 +12,42 @@
   position: relative;
   width: 100%;
 }
+            #zoneViewer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+#zoneFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#downloadBtn {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 10000;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+#downloadBtn:hover {
+    opacity: 1;
+}
 
 header {
   position: relative;
@@ -169,23 +205,10 @@ header {
             <div id="container">Loading...</div>
         </details>
     </main>
-
-    <div id="zoneViewer">
-        <div class="zone-header">
-            <div class="zone-title">
-                <h2 id="zoneName">zone</h2>
-                <span id="zoneId" style="display: none;"></span>
-                <a id="zoneAuthor" href="#" target="_blank">by Author</a>
-            </div>
-            <div class="zone-controls">
-                <button onclick="fullscreenZone()">Fullscreen</button>
-                <button onclick="aboutBlank()">Open in New Tab</button>
-                <button onclick="downloadZone()">Download</button>
-                <button onclick="closeZone()">Close</button>
-            </div>
-        </div>
-        <iframe id="zoneFrame"></iframe>
-    </div>
+<div id="zoneViewer">
+    <iframe id="zoneFrame"></iframe>
+    <button id="downloadBtn" onclick="downloadZone()">⬇ Download</button>
+</div>
 
     <div id="popupOverlay">
         <div class="popup">
@@ -269,6 +292,7 @@ header {
 
 </body>
 </html>
+
 
 
 
