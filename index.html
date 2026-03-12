@@ -28,35 +28,13 @@
     border: none;
 }
 
-#downloadBtn {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    z-index: 10000;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 13px;
-    cursor: pointer;
-    backdrop-filter: blur(4px);
-    opacity: 0.4;
-    transition: opacity 0.2s;
-}
-
-#downloadBtn:hover {
-    opacity: 1;
-}
-
 header {
   position: relative;
   width: 100%;
-  height: 80px; /* можно поменять под твой navbar */
+  height: 80px;
   overflow: hidden;
 }
 
-/* Контент по центру */
 .header-content {
   display: flex;
   align-items: center;
@@ -67,11 +45,10 @@ header {
   z-index: 2;
 }
 
-/* Изображения по углам экрана */
 .halloween-img {
-  position: fixed; /* фиксируем к экрану */
+  position: fixed;
   top: 0;
-  height: 80px; /* совпадает с высотой header */
+  height: 80px;
   width: auto;
   object-fit: contain;
   pointer-events: none;
@@ -104,7 +81,6 @@ header {
     }
 }
 
-/* Адаптив */
 @media (max-width: 768px) {
   header {
     height: 60px;
@@ -115,33 +91,10 @@ header {
     opacity: 0.7;
   }
 }
-
-
-
         </style>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
-    <script>
-        window.addEventListener('beforeunload', function (event) {
-            event.preventDefault();
-            event.returnValue = '';
-            return 'Are you sure you want to leave? Any unsaved changes will be lost.';
-        });
-    </script>
-    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
-    <meta name="google-adsense-account" content="ca-pub-5521219086088837">
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-WX5VS54ZDW');
-    </script>
-    <script async src="https://fundingchoicesmessages.google.com/i/pub-5521219086088837?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
     <script src="https://cdn.jsdelivr.net/gh/gn-mathcopy/gn-mathcopy.github.io@main/gnmath.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -160,9 +113,6 @@ header {
 </head>
 <body class="dark-mode">
     <header>
-     <!--  <img src="halloween-left.18384599.png" alt="Halloween Left" class="halloween-img left"> 
-        <img src="halloween-right.1ddd0892.png" alt="Halloween Right" class="halloween-img right"> -->
-      
         <div class="header-content">
           <div class="logo"><img src="./favicon.png" alt="" width="120px"></div>
           <div class="search-container">
@@ -181,18 +131,6 @@ header {
           </div>
         </div>
       </header>
-            
-    <ins class="adsbygoogle"
-    style="display:block; text-align:center;"
-    data-ad-client="ca-pub-5521219086088837"
-    data-ad-slot="5549138288"
-    data-ad-format="auto"
-    data-full-width-responsive="true">
-    <h1 class="red234"></h1>
-</ins>
-   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
 
     <main>
         <details id="featuredZonesWrapper" open>
@@ -205,9 +143,9 @@ header {
             <div id="container">Loading...</div>
         </details>
     </main>
+
 <div id="zoneViewer">
     <iframe id="zoneFrame"></iframe>
-    <button id="downloadBtn" onclick="downloadZone()">⬇ Download</button>
 </div>
 
     <div id="popupOverlay">
@@ -222,16 +160,6 @@ header {
         </div>
     </div>
 
-    <ins class="adsbygoogle"
-    style="display:block; text-align:center;"
-    data-ad-client="ca-pub-5521219086088837"
-    data-ad-slot="5549138288"
-    data-ad-format="auto"
-    data-full-width-responsive="true">
-</ins>
-   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
     <footer>
         <div class="footer-links">
             <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
@@ -242,7 +170,7 @@ header {
             <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
         </div>
     </footer>
-    <script id="_wau1z9">var _wau = _wau || []; _wau.push(["small", "amcze08afp", "1z9"]);</script><script async src="//waust.at/s.js"></script>
+
     <script src="script.js"></script>
     <script>
         const search = new URLSearchParams(window.location.search);
@@ -251,87 +179,15 @@ header {
             loadPrivacy();
         }
     </script>
-    <script>
-/* document.addEventListener("DOMContentLoaded", () => {
-    const snowContainer = document.createElement("div");
-    snowContainer.style.position = "fixed";
-    snowContainer.style.top = "0";
-    snowContainer.style.left = "0";
-    snowContainer.style.width = "100%";
-    snowContainer.style.height = "100%";
-    snowContainer.style.pointerEvents = "none";
-    snowContainer.style.overflow = "hidden";
-    snowContainer.style.zIndex = "9999";
-    document.body.appendChild(snowContainer);
 
-    function createSnowflake() {
-        const flake = document.createElement("div");
-        flake.classList.add("snowflake");
-        flake.textContent = "❄";
-        flake.style.left = Math.random() * 100 + "vw";
-        flake.style.animationDuration = 5 + Math.random() * 5 + "s";
-        flake.style.opacity = Math.random();
-        flake.style.fontSize = 10 + Math.random() * 20 + "px";
-        snowContainer.appendChild(flake);
-
-        setTimeout(() => flake.remove(), 10000);
-    }
-
-    setInterval(createSnowflake, 120);
-}); */
-</script>
-    <!-- ANNOUNCEMENT -->
-<div id="announcementOverlay" style="display:none">
-  <div class="announcement-modal">
-    <button class="announcement-close">×</button>
-    <h2 id="annTitle"></h2>
-    <p id="annDesc"></p>
-    <img id="annImg">
-  </div>
-</div>
+    <div id="announcementOverlay" style="display:none">
+      <div class="announcement-modal">
+        <button class="announcement-close">×</button>
+        <h2 id="annTitle"></h2>
+        <p id="annDesc"></p>
+        <img id="annImg">
+      </div>
+    </div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
